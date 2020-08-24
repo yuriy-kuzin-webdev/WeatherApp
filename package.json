@@ -1,0 +1,28 @@
+{
+  "name": "weathercomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuriyKuzinDu/myWeather.git"
+  },
+  "author": "Yuriy Kuzin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuriyKuzinDu/myWeather/issues"
+  },
+  "homepage": "https://github.com/yuriyKuzinDu/myWeather#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dateformat": "^3.0.3",
+    "jquery": "^3.4.1",
+    "jquery-autocomplete": "^1.2.8"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2"
+  }
+}

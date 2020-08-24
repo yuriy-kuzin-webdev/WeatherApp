@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/c69517d5e1.js" crossorigin="anonymous"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/dateformat/lib/dateformat.js"></script>
+    <script src="js/wind-direction.js"></script>
+    <script src="js/basic-functions.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCTn30xqZo1poQRKh1a_W_8u-63eJNSwI4"></script>
+</head>
+<body>
+    <main class="main-wrapper">
+        <header class="main-header">
+            <h2 class="main-header-logo"><i class="fas fa-meteor"></i>myWeather</h2>
+            <nav class="main-header-nav">
+                <div class="nav-controls">
+                    <div class="nav-controls-today nav-controls-selected">
+                        <a class="nav-today" title="Current weather in your city">Today</a>
+                    </div>
+                    <div class="nav-controls-forecast">
+                        <a class="nav-forecast" title="Five day forecast">Forecast</a>
+                    </div>
+                </div>
+                <div class="nav-search">
+                    <input type="text" class="nav-search-input" id="search-input" placeholder="City name..." autocapitalize="words">
+                    <button type="button" class="nav-search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+        <section class="main-section">
+            <article class="main-section-today">
+                <div class="today-current">
+                    <div class="today-current-date"></div>
+                    <div class="today-current-icon"></div>
+                    <div class="today-current-description"></div>
+                    <div class="today-current-temperature"></div>
+                    <div class="today-current-feeling"></div>
+                    <div class="today-current-wind"></div>
+                </div>
+                <div class="today-duration">
+                    <div class="today-duration-sunrise"></div>
+                    <div class="today-duration-time"></div>
+                    <div class="today-duration-sunset"></div>
+                </div>
+                <div class="today-hourly"></div>
+                <div class="today-nearby"></div>
+            </article>
+            <article class="main-section-forecast">
+                <div class="forecast-list"></div>
+                <div class="forecast-selected"></div>
+            </article>
+            <article class="main-section-error">
+                <div class="main-section-error-image"></div>
+                <div class="main-section-error-message">Not found</div>
+            </article>
+            <article class="main-section-ads"></article>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,486 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    scroll-behavior: smooth;
+}
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active{
+    outline: none;
+    text-decoration: none;
+    border-bottom: none;
+}
+button:focus{
+    outline: none;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+  }
+  .main-header-logo:hover,
+  .today-current:hover,
+  .today-duration:hover,
+  .main-section-error:hover{
+      cursor: default;
+  }
+  .list-item-icon,
+  .list-info-icon,
+  .main-header-logo,
+  .list-item-icon > i,
+  .list-info-icon > i,
+  .today-current-icon,
+  .main-header-logo > i,
+  .today-current-icon > i,
+  .nearby-container-cityicon,
+  .hourly-info-icon-whitespace,
+  .nearby-container-cityicon > i,
+  .hourly-info-icon-whitespace > i
+{
+    overflow: visible;
+    text-shadow: 2px 4px 6px black; 
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-image: linear-gradient(#EFB447, #E3DFAD, #EFB447);
+}
+.main-wrapper {
+    width: 1120px;
+    height: 630px;
+    display: grid;
+    grid:
+        "main-header" 140px
+        "main-section" 490px
+        / 1120px;
+    border-radius: 32px;
+    background: #FEB53E;
+    box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
+}
+.main-header {
+    width: 1120px;
+    height: 140px;
+    grid-area: main-header;
+    display: grid;
+    grid: 
+        "main-header-logo" 84px
+        "main-header-nav" 56px
+        /1120px;
+}
+.main-header-logo {
+    width: 1120px;
+    height: 84px;
+    grid-area: main-header-logo;
+    display: grid;
+    grid-auto-flow: column;
+    place-content: center;
+    column-gap: 22px;
+    color: #fff;
+    font-size: 3em;
+}
+.main-header-nav {
+    width: 1120px;
+    height: 56px;
+    grid-area: main-header-nav;
+    display: grid;
+    grid: "nav-controls nav-search" 56px / 800px 320px;
+}
+.nav-controls {
+    width: 800px;
+    height: 56px;
+    grid-area: nav-controls;
+    display: grid;
+    grid: "nav-controls-today nav-controls-forecast" 56px / 160px 160px auto;
+    column-gap: 3px;
+    font-size: 1.3em;
+    color: #fff;
+}
+.nav-controls-forecast{
+    grid-area: nav-controls-forecast;
+}
+.nav-controls-today{
+    grid-area: nav-controls-today;
+}
+.nav-controls-forecast,
+.nav-controls-today {
+    width: 160px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    place-self: end;
+}
+.nav-controls > div:hover {
+    background: rgb(255, 168, 29);
+    cursor: pointer;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.nav-controls-selected{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background: rgb(255, 168, 29);
+    font-weight: bold;
+    color: darkslategray;
+}
+.nav-search{
+    width: 320px;
+    height: 40px;
+    grid-area: nav-search;
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    place-self: end;
+}
+.nav-search-input {
+    width: 80%;
+    height: 20px;
+    border:5px solid rgb(255, 168, 29);
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #000;
+    background: transparent;
+    font-weight: bold;
+}
+.nav-search-button{
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgb(255, 168, 29);
+    background: rgb(255, 168, 29);
+    text-align: center;
+    color: #FEB53E;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+
+
+.main-section {
+    width: 1120px;
+    height: 490px;
+    grid-area: main-section;
+    display: grid;
+    overflow: hidden;
+    grid: 
+    "main-section-today main-section-forecast" 490px 
+    "main-section-error main-section-ads " 490px
+    / 1120px 1120px;
+    background: rgb(255, 168, 29);
+}
+.main-section-error{
+    width: 1120px;
+    height: 490px;
+    grid-area: main-section-error;
+    display: grid;
+    grid-auto-columns: 840px;
+    grid-auto-rows: 290px 100px max-content;
+    place-content: center center;
+}
+.main-section-error-image{
+    background: url(../img/404.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%;
+}
+.main-section-error-message {
+    text-align: center;
+    color: #464646;
+    font-size: 2em;
+}
+
+.main-section-today {
+    width: 1120px;
+    height: 490px;
+    grid-area: main-section-today;
+    display: grid;
+    grid:
+        "today-current today-hourly" 330px
+        "today-duration today-nearby" 160px
+        / 200px 840px;
+    place-content: center;
+}
+.today-current {
+    width: 200px;
+    height: 330px;
+    grid-area: today-current;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
+    justify-items: center;
+    place-content: center;
+    row-gap: 4px;
+}
+.today-current-date{
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.today-current-icon {
+    font-size: 6.6em;
+    color: #fff;
+}
+.today-current-description{
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000;
+}
+.today-current-temperature{
+    font-size: 1.2em;
+    font-weight: bold;
+    overflow: visible;
+}
+.today-current-feeling,
+.today-current-wind {
+    font-size: 0.8em;
+    color: darkslategray;
+}
+.today-duration{
+    width: 200px;
+    height: 160px;
+    grid-area: today-duration;
+    display: grid;
+    grid-auto-rows: 30px;
+    grid-auto-flow: row;
+    place-content: center;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+.today-duration-sunrise,
+.today-duration-time,
+.today-duration-sunset{
+    text-align: left;
+}
+.today-hourly {
+    width: 840px;
+    height: 330px;
+    grid-area: today-hourly;
+    display: grid;
+    grid-auto-rows: 250px;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    place-content: center;
+}
+.today-hourly-info{
+    height: 250px;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
+    place-content: center;
+    row-gap: 4px;
+    border-right: 1px solid #FEB53E;
+    border-left: 1px solid #FEB53E;
+    border-radius: 20%;
+}
+.hourly-info-time{
+    font-size: .9em;
+    font-weight: bold;
+}
+.hourly-info-icon-whitespace {
+    height: 109px;
+    display: grid;
+    place-content: center;
+    font-size: 3em;
+    color: #fff;
+}
+.hourly-info-forecast,
+.hourly-info-temperature,
+.hourly-info-realfeel,
+.hourly-info-wind {
+    display: grid;
+    place-content: center;
+    font-size: 0.8em;
+    color: darkslategray;
+}
+.hourly-info-forecast,
+.hourly-info-temperature{
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000;
+}
+
+
+
+.today-nearby {
+    width: 840px;
+    height: 160px;
+    grid-area: today-nearby;
+    display: grid;
+    grid-template-rows: 28px 28px;
+    grid-template-columns: 320px 320px;
+    place-content: center center;
+    column-gap: 80px;
+    row-gap: 7px;
+}
+.today-nearby-container{
+    width: 320px;
+    height: 28px;
+    display: grid;
+    grid-auto-columns: auto 80px 80px;
+    grid-auto-flow: column;
+    font-size: 0.9em;
+    box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
+}
+.today-nearby-container:hover{
+    cursor: pointer;
+}
+
+.nearby-container-cityname{
+    place-self: center baseline;
+}
+.nearby-container-cityicon{
+    font-size: 1.3em;
+    color: #fff;
+}
+
+.nearby-container-cityicon,
+.nearby-container-citytemp{
+    place-self: center;
+}
+
+
+
+
+
+
+
+
+.main-section-forecast {
+    width: 1120px;
+    height: 490px;
+    grid-area: main-section-forecast;
+    display: grid;
+    grid:
+        "forecast-list" 230px
+        "forecast-selected" 260px
+        / 1040px;
+    place-content: center;
+}
+
+.forecast-list{
+    width: 1040px;
+    height: 230px;
+    grid-area: forecast-list;
+    display: grid;
+    grid-auto-rows: 190px;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    place-content: end center;
+}
+.forecast-list-item{
+    height: 190px;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
+    place-content:center;
+    row-gap: 6px;
+    text-align: center;
+}
+.list-item-day{
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.list-item-icon{
+    font-size: 4em;
+    color: #fff;
+}
+.list-item-temperature {
+    font-size: 1.1em;
+    font-weight: bold;
+    overflow: visible;
+}
+.list-item-temperature > i{
+    overflow: visible;
+}
+.list-item-description{
+    font-size: 0.8em;
+}
+.today-hourly-selected,
+.today-hourly-info:hover,
+.selected-list-info:hover,
+.forecast-list-item:hover{
+    cursor: pointer;
+    background: #FEB53E;
+    border-radius: 16px !important;
+}
+.forecast-list .forecast-node-selected,
+.forecast-selected-list .forecast-node-selected
+{
+    border-right: 2px solid darkslategray;
+    border-left: 2px solid rgb(182, 129, 43);
+    border-radius: 20%;
+}
+
+.forecast-selected {
+    width: 1040px;
+    height: 260px;
+    display: grid;
+    grid-auto-columns: 1040px;
+    grid-auto-rows: 260px;
+    grid-auto-flow: column;
+}
+.forecast-selected-list{
+    width: 1040px;
+    height: 260px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 210px;
+    grid-auto-flow: column;
+    place-content: center center;
+    grid-gap: 2px;
+}
+.selected-list-info{
+    height: 210px;
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-auto-flow: row;
+    place-content: center center;
+    row-gap: 4px;
+    text-align: center;
+}
+
+.list-info-time{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.list-info-icon{
+    font-size: 3em;
+    color: #fff;
+}
+.list-info-forecast,
+.list-info-temperature
+{
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #000;
+}
+.list-info-realfeel,
+.list-info-wind
+{
+    font-size: 0.8em;
+    color: darkslategray;
+}
+
+.pac-item {
+    background: #FEB53E !important;
+}
+div.pac-container.pac-logo::after{
+    background: #FEB53E !important;
+}
